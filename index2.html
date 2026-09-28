@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रीमद्भागवत कथा सप्ताह - देणगी व सेवा निधी</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tiro Devanagari Marathi', serif; }
+        .font-sans { font-family: 'Poppins', sans-serif; }
+        .bg-saffron { background-color: #ff8c00; }
+        .bg-saffron-dark { background-color: #d97706; }
+        .text-saffron { color: #d97706; }
+    </style>
+</head>
+<body class="bg-amber-50 text-gray-800">
+
+    <!-- Header / Banner -->
+    <header class="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 text-white shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 py-8 text-center">
+            <div class="text-4xl mb-2">ॐ नमो भगवते वासुदेवाय</div>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-wide mb-2">श्रीमद्भागवत ज्ञानयज्ञ सप्ताह</h1>
+            <p class="text-xl md:text-2xl text-amber-100 font-semibold mb-4">|| ग्रामस्थ व भागवत सप्ताह समिती ||</p>
+            
+            <div class="inline-flex flex-wrap justify-center gap-3 bg-black/20 p-3 rounded-xl text-sm md:text-base">
+                <span><i class="fa-regular fa-calendar-days mr-1 text-amber-300"></i> दिनांक: <b>१० ते १७ नोव्हेंबर २०२६</b></span>
+                <span>|</span>
+                <span><i class="fa-solid fa-location-dot mr-1 text-amber-300"></i> ठिकाण: <b>मुख्य हनुमान मंदिर, गावठाण</b></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Welcome & Invitation Section -->
+    <section class="max-w-4xl mx-auto px-4 py-6 text-center">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-amber-200">
+            <h2 class="text-2xl font-bold text-amber-800 mb-3">|| नम्र आवाहन ||</h2>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                आपल्या गावात अखंड हरिनाम व श्रीमद्भागवत कथा सप्ताहाचे भव्य आयोजन करण्यात आले आहे. या अखंड ज्ञानयज्ञासाठी आणि महाप्रसादासाठी आपण सर्व भाविकांनी सढळ हस्ते देणगी देऊन सेवा निधीमध्ये योगदान द्यावे, ही नम्र विनंती.
+            </p>
+        </div>
+    </section>
+
+    <!-- Donation Modes & QR Code Section -->
+    <section class="max-w-4xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-6">
+        
+        <!-- UPI & QR Code Box -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-orange-500 text-center flex flex-col items-center justify-between">
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2"><i class="fa-solid fa-qrcode text-saffron mr-2"></i>स्कॅन करून देणगी द्या</h3>
+                <p class="text-sm text-gray-600 mb-4">PhonePe / Google Pay / Paytm द्वारे स्कॅन करा</p>
+                
+                <!-- QR Code Image -->
+                <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 inline-block mb-4 shadow-inner">
+                    <img id="qrCodeImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=bhagwatsaptah@upi%26pn=Bhagwat%20Saptah%20Samiti" alt="UPI QR Code" class="w-48 h-48 mx-auto">
+                </div>
+            </div>
+
+            <div class="w-full bg-amber-100 p-3 rounded-lg border border-amber-300 text-left">
+                <div class="text-xs text-amber-900 font-semibold mb-1">UPI ID:</div>
+                <div class="flex justify-between items-center bg-white px-3 py-1.5 rounded border border-amber-200">
+                    <span id="upiId" class="font-sans font-bold text-gray-800 text-sm">bhagwatsaptah@upi</span>
+                    <button onclick="copyText('upiId')" class="text-xs bg-saffron text-white px-2 py-1 rounded hover:bg-saffron-dark transition">
+                        <i class="fa-solid fa-copy"></i> कॉपी
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Account Details Box -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-orange-500 flex flex-col justify-between">
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-building-columns text-saffron mr-2"></i>बँक खात्याची माहिती</h3>
+                
+                <div class="space-y-3 font-sans text-sm">
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <span class="text-xs text-gray-500 block">खातेदाराचे नाव (Account Name):</span>
+                        <span class="font-semibold text-gray-800 text-base">श्री भागवत सप्ताह समिती</span>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs text-gray-500 block">खाते क्रमांक (Account No):</span>
+                            <span id="accNum" class="font-bold text-gray-800 text-base">1234567890123</span>
+                        </div>
+                        <button onclick="copyText('accNum')" class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs text-gray-500 block">आयएफएससी कोड (IFSC Code):</span>
+                            <span id="ifscCode" class="font-bold text-gray-800 text-base">SBIN0001234</span>
+                        </div>
+                        <button onclick="copyText('ifscCode')" class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <span class="text-xs text-gray-500 block">बँकेचे नाव व शाखा:</span>
+                        <span class="font-semibold text-gray-800">स्टेट बँक ऑफ इंडिया (ग्राम शाखा)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500 italic mt-3 text-center">* ऑनलाइन देणगी दिल्यानंतर खालील फॉर्म भरून पावती मिळवा.</p>
+        </div>
+    </section>
+
+    <!-- Online Donation Form -->
+    <section class="max-w-4xl mx-auto px-4 py-6">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-amber-300">
+            <h3 class="text-2xl font-bold text-center text-amber-900 mb-2">
+                <i class="fa-solid fa-hand-holding-heart text-saffron mr-2"></i>ऑनलाइन देणगी नोंदणी व पावती
+            </h3>
+            <p class="text-center text-sm text-gray-600 mb-6">कृपया तुमची माहिती भरा जेणेकरून आम्ही तुम्हाला डिजिटल पावती पाठवू शकू.</p>
+
+            <form id="donationForm" onsubmit="generateReceipt(event)" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">पूर्ण नाव (Full Name) *</label>
+                        <input type="text" id="donorName" required placeholder="उदा. रामराव पाटील" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">मोबाईल क्रमांक (Mobile) *</label>
+                        <input type="tel" id="donorMobile" required pattern="[0-9]{10}" placeholder="१० अंकी मोबाईल नंबर" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none font-sans">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">गाव / शहर (Village/City) *</label>
+                        <input type="text" id="donorCity" required placeholder="उदा. जळगाव / आमचे गाव" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">देणगी रक्कम (₹) *</label>
+                        <input type="number" id="donorAmount" required min="1" placeholder="उदा. 1001" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none font-sans">
+                    </div>
+                </div>
+
+                <!-- Fast Amount Selectors -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1">त्वरित रक्कम निवडा:</label>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" onclick="setAmount(251)" class="px-3 py-1 text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full font-sans font-semibold">₹251</button>
+                        <button type="button" onclick="setAmount(501)" class="px-3 py-1 text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full font-sans font-semibold">₹501</button>
+                        <button type="button" onclick="setAmount(1001)" class="px-3 py-1 text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full font-sans font-semibold">₹1,001</button>
+                        <button type="button" onclick="setAmount(2100)" class="px-3 py-1 text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full font-sans font-semibold">₹2,100</button>
+                        <button type="button" onclick="setAmount(5001)" class="px-3 py-1 text-sm bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full font-sans font-semibold">₹5,001</button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">पेमेंटचा प्रकार (Payment Mode) *</label>
+                        <select id="paymentMode" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none">
+                            <option value="Online UPI / GPay / PhonePe">Online UPI / GPay / PhonePe</option>
+                            <option value="बँक ट्रान्सफर (Bank Transfer)">बँक ट्रान्सफर (Bank Transfer)</option>
+                            <option value="नगद (Cash)">नगद (Cash)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">UTR / ट्रान्सझॅक्शन आयडी (पर्यायी)</label>
+                        <input type="text" id="txnId" placeholder="UPI ट्रान्सफरचा UTR क्रमांक" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 outline-none font-sans">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition duration-200 text-lg">
+                    <i class="fa-solid fa-receipt mr-2"></i> देणगी जमा करा व पावती मिळवा
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Digital Receipt Modal -->
+    <div id="receiptModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+        <div class="bg-amber-50 max-w-lg w-full rounded-2xl p-6 shadow-2xl border-4 border-amber-400 relative">
+            <button onclick="closeReceipt()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+
+            <!-- Printable Receipt Header -->
+            <div id="printableReceipt" class="bg-white p-6 rounded-xl border-2 border-dashed border-amber-400 text-center">
+                <div class="text-amber-800 text-lg font-bold">ॐ नमो भगवते वासुदेवाय</div>
+                <h2 class="text-2xl font-bold text-orange-600 mb-1">श्रीमद्भागवत कथा सप्ताह</h2>
+                <p class="text-xs text-gray-600 mb-3">ग्रामस्थ व भागवत सप्ताह समिती, ग्रामपंचायत</p>
+                <div class="bg-amber-100 text-amber-900 text-xs font-bold py-1 px-3 rounded-full inline-block mb-4">
+                    अधिकृत देणगी पावती (Digital Receipt)
+                </div>
+
+                <div class="text-left text-sm space-y-2 border-t border-b border-gray-200 py-3 mb-4 font-sans">
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">पावती क्र:</span>
+                        <span id="recNo" class="font-bold">#2026-001</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">दिनांक:</span>
+                        <span id="recDate" class="font-bold"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">श्री / श्रीमती:</span>
+                        <span id="recName" class="font-bold text-gray-900"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">गाव / शहर:</span>
+                        <span id="recCity" class="font-bold"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">मोबाईल:</span>
+                        <span id="recMobile" class="font-bold"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">पेमेंट प्रकार:</span>
+                        <span id="recMode" class="font-bold"></span>
+                    </div>
+                    <div class="flex justify-between items-center bg-amber-50 p-2 rounded">
+                        <span class="text-amber-900 font-bold">एकूण प्राप्त रक्कम:</span>
+                        <span id="recAmount" class="text-xl font-extrabold text-green-700"></span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-end text-xs text-gray-500 pt-2">
+                    <div>
+                        <p class="text-green-600 font-bold"><i class="fa-solid fa-circle-check"></i> देणगी स्वीकारली</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="font-bold text-gray-800">भागवत सप्ताह समिती</div>
+                        <p>(डिजिटल स्वाक्षरी)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons (Updated with SMS & WhatsApp) -->
+            <div class="space-y-2 mt-4">
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="sendDirectSMS()" class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center">
+                        <i class="fa-solid fa-comment-sms mr-2"></i> SMS पाठवा
+                    </button>
+                    <button onclick="sendDirectWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp पाठवा
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center">
+                        <i class="fa-solid fa-print mr-2"></i> प्रिंट / सेव्ह
+                    </button>
+                    <button onclick="closeReceipt()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded-lg font-bold text-sm">
+                        बंद करा
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Donors Section -->
+    <section class="max-w-4xl mx-auto px-4 py-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-amber-200">
+            <h3 class="text-xl font-bold text-amber-900 mb-4 flex items-center">
+                <i class="fa-solid fa-list-ol text-saffron mr-2"></i> देणगीदार यादी (Recent Donors)
+            </h3>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse font-sans text-sm">
+                    <thead>
+                        <tr class="bg-amber-100 text-amber-900 border-b border-amber-300">
+                            <th class="p-2">नाव</th>
+                            <th class="p-2">गाव</th>
+                            <th class="p-2 text-right">रक्कम (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donorTableBody">
+                        <tr class="border-b hover:bg-amber-50">
+                            <td class="p-2">श्री विठ्ठल पाटील</td>
+                            <td class="p-2">मुख्य गाव</td>
+                            <td class="p-2 text-right font-bold text-green-700">₹5,001</td>
+                        </tr>
+                        <tr class="border-b hover:bg-amber-50">
+                            <td class="p-2">श्री गणेश देशमूख</td>
+                            <td class="p-2">पुणे</td>
+                            <td class="p-2 text-right font-bold text-green-700">₹2,100</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer class="bg-amber-900 text-amber-100 py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-3">
+            <h4 class="text-lg font-bold text-white">|| संपर्क व अधिक माहितीसाठी ||</h4>
+            <div class="flex flex-wrap justify-center gap-6 text-sm font-sans">
+                <span><i class="fa-solid fa-phone mr-1"></i> अध्यक्ष: ९८७६५४३२१०</span>
+                <span><i class="fa-solid fa-phone mr-1"></i> खजिनदार: ९०१२३४५६७८</span>
+            </div>
+            <p class="text-xs text-amber-300 pt-4 border-t border-amber-800">
+                © २०२६ श्रीमद्भागवत सप्ताह समिती. सर्व हक्क सुरक्षित.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let donorData = {};
+
+        function setAmount(amount) {
+            document.getElementById('donorAmount').value = amount;
+        }
+
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+            alert("कॉपी झाले: " + text);
+        }
+
+        function generateReceipt(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('donorName').value;
+            const mobile = document.getElementById('donorMobile').value;
+            const city = document.getElementById('donorCity').value;
+            const amount = document.getElementById('donorAmount').value;
+            const mode = document.getElementById('paymentMode').value;
+            const recNo = '#BHG-' + Math.floor(1000 + Math.random() * 9000);
+            const date = new Date().toLocaleDateString('en-IN');
+
+            // Save donor info globally
+            donorData = { name, mobile, city, amount, mode, recNo, date };
+
+            // Update Receipt UI
+            document.getElementById('recName').innerText = name;
+            document.getElementById('recMobile').innerText = mobile;
+            document.getElementById('recCity').innerText = city;
+            document.getElementById('recAmount').innerText = '₹' + parseInt(amount).toLocaleString('en-IN');
+            document.getElementById('recMode').innerText = mode;
+            document.getElementById('recNo').innerText = recNo;
+            document.getElementById('recDate').innerText = date;
+
+            // Add to Donor List
+            const tbody = document.getElementById('donorTableBody');
+            const newRow = document.createElement('tr');
+            newRow.className = "border-b bg-amber-50 font-bold";
+            newRow.innerHTML = `
+                <td class="p-2">${name}</td>
+                <td class="p-2">${city}</td>
+                <td class="p-2 text-right text-green-700">₹${parseInt(amount).toLocaleString('en-IN')}</td>
+            `;
+            tbody.insertBefore(newRow, tbody.firstChild);
+
+            // Open Receipt Modal
+            document.getElementById('receiptModal').classList.remove('hidden');
+        }
+
+        // Send Direct SMS via Phone Messaging App
+        function sendDirectSMS() {
+            if (!donorData.mobile) return;
+            const message = `जय श्री कृष्णा! श्रीमद्भागवत कथा सप्ताहासाठी ₹${donorData.amount} देणगी प्राप्त झाली. पावती क्र: ${donorData.recNo}. धन्यवाद! - भागवत सप्ताह समिती`;
+            const smsUrl = `sms:${donorData.mobile}?body=${encodeURIComponent(message)}`;
+            window.location.href = smsUrl;
+        }
+
+        // Send Direct WhatsApp Message
+        function sendDirectWhatsApp() {
+            if (!donorData.mobile) return;
+            const message = `*ॐ नमो भगवते वासुदेवाय*\n\n*श्रीमद्भागवत कथा सप्ताह - देणगी पावती*\n-------------------------------\n*नाव:* ${donorData.name}\n*पावती क्र:* ${donorData.recNo}\n*दिनांक:* ${donorData.date}\n*रक्कम:* ₹${donorData.amount}\n*पेमेंट प्रकार:* ${donorData.mode}\n-------------------------------\nआपल्या सढळ हस्ते दिलेल्या देणगीबद्दल मनःपूर्वक धन्यवाद! 🙏`;
+            const waUrl = `https://wa.me/91${donorData.mobile}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        function closeReceipt() {
+            document.getElementById('receiptModal').classList.add('hidden');
+            document.getElementById('donationForm').reset();
+        }
+    </script>
+</body>
+</html>
